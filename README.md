@@ -17,20 +17,6 @@ A full-featured desktop To-Do List application built with **JavaFX 21**, **MySQL
 - **No hardcoded credentials** – all secrets loaded from environment variables
 - Clean, dark-sidebar UI with responsive layout
 
----
-
-## 🖥️ Screenshots
-
-| Login | Dashboard | Task Manager |
-|-------|-----------|--------------|
-| _(add screenshot)_ | _(add screenshot)_ | _(add screenshot)_ |
-
-| Register | Profile |
-|----------|---------|
-| _(add screenshot)_ | _(add screenshot)_ |
-
----
-
 ## 🗂 Project Structure
 
 ```
@@ -166,17 +152,6 @@ java -jar target/todo-app-1.0.0.jar
 | SQL injection | All queries use **PreparedStatements** with parameterised inputs |
 | .env file | Listed in `.gitignore` – never committed to version control |
 | Cross-user access | All task operations include `user_id` check at SQL level |
-
----
-
-## 🏗 Architecture
-
-The application follows the **MVC pattern**:
-
-- **Model** – `User`, `Task` (plain Java objects)
-- **View** – FXML layouts + CSS stylesheet
-- **Controller** – JavaFX controllers wiring UI events to DAO calls
-- **DAO layer** – isolated database queries using JDBC + HikariCP pool
 
 ---
 
