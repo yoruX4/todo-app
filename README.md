@@ -13,7 +13,6 @@ A full-featured desktop To-Do List application built with **JavaFX 21**, **MySQL
 - **Keyword search** across title, description, and category
 - **Priority levels** (Low / Medium / High) with colour coding
 - **Due dates** with overdue detection
-- **HikariCP** JDBC connection pooling
 - **No hardcoded credentials** – all secrets loaded from environment variables
 - Clean, dark-sidebar UI with responsive layout
 
@@ -141,17 +140,6 @@ java -jar target/todo-app-1.0.0.jar
 | bob | mypassword |
 | charlie | charlie123 |
 
----
-
-## 🔒 Security: How Credentials Are Secured
-
-| Concern | Solution |
-|---------|---------|
-| Database password | Loaded from `.env` / OS env via `dotenv-java` – never in source code |
-| User passwords | Hashed with **BCrypt** (cost factor 12) before storage – irreversible |
-| SQL injection | All queries use **PreparedStatements** with parameterised inputs |
-| .env file | Listed in `.gitignore` – never committed to version control |
-| Cross-user access | All task operations include `user_id` check at SQL level |
 
 ---
 
