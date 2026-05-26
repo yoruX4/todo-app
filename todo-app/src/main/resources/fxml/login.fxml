@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns="http://javafx.com/javafx/17"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.todoapp.controller.LoginController"
+           styleClass="auth-root">
+
+    <VBox alignment="CENTER" spacing="0" maxWidth="420" maxHeight="560"
+          styleClass="auth-card">
+        <padding><Insets top="48" right="48" bottom="48" left="48"/></padding>
+
+        <!-- Logo / App name -->
+        <Label text="TaskFlow" styleClass="app-logo"/>
+        <Label text="Sign in to your account" styleClass="auth-subtitle"/>
+        <Region VBox.vgrow="NEVER" prefHeight="32"/>
+
+        <!-- Username -->
+        <Label text="Username" styleClass="field-label"/>
+        <TextField fx:id="usernameField" promptText="Enter your username" styleClass="auth-field"/>
+        <Region prefHeight="16"/>
+
+        <!-- Password -->
+        <Label text="Password" styleClass="field-label"/>
+        <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="auth-field"/>
+        <Region prefHeight="8"/>
+
+        <!-- Error label -->
+        <Label fx:id="errorLabel" styleClass="error-label" wrapText="true"/>
+        <Region prefHeight="8"/>
+
+        <!-- Login button -->
+        <Button fx:id="loginButton" text="Sign In" onAction="#handleLogin"
+                styleClass="btn-primary" maxWidth="Infinity"/>
+        <Region prefHeight="20"/>
+
+        <!-- Divider -->
+        <Separator/>
+        <Region prefHeight="20"/>
+
+        <!-- Register link -->
+        <HBox alignment="CENTER" spacing="6">
+            <Label text="Don't have an account?"/>
+            <Hyperlink text="Create one" onAction="#handleGoToRegister" styleClass="link"/>
+        </HBox>
+
+        <!-- Spinner -->
+        <ProgressIndicator fx:id="spinner" prefWidth="32" prefHeight="32" visible="false"/>
+    </VBox>
+</StackPane>

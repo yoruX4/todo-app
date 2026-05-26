@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.todoapp.controller.ProfileController"
+            styleClass="main-root">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="220" spacing="4">
+            <padding><Insets top="32" right="16" bottom="32" left="16"/></padding>
+
+            <Label text="TaskFlow" styleClass="sidebar-logo"/>
+            <Region prefHeight="32"/>
+
+            <Button text="📊  Dashboard" onAction="#handleGoToDashboard"
+                    maxWidth="Infinity" styleClass="sidebar-btn"/>
+            <Button text="✅  My Tasks"  onAction="#handleGoToTasks"
+                    maxWidth="Infinity" styleClass="sidebar-btn"/>
+            <Button text="👤  Profile"   onAction="#handleGoToProfile"
+                    maxWidth="Infinity" styleClass="sidebar-btn, sidebar-btn-active"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button text="⇠  Logout" onAction="#handleLogout"
+                    maxWidth="Infinity" styleClass="sidebar-btn, sidebar-btn-danger"/>
+        </VBox>
+    </left>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="content-scroll">
+            <VBox spacing="28" styleClass="content-area">
+                <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+                <VBox spacing="4">
+                    <Label text="Profile &amp; Settings" styleClass="page-title"/>
+                    <Label text="Manage your account information and security." styleClass="page-subtitle"/>
+                </VBox>
+
+                <!-- ---- Profile card ---- -->
+                <VBox styleClass="settings-card" spacing="16">
+                    <padding><Insets topRightBottomLeft="28"/></padding>
+                    <Label text="Personal Information" styleClass="section-title"/>
+
+                    <GridPane hgap="16" vgap="14">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="130"/>
+                            <ColumnConstraints prefWidth="340" hgrow="ALWAYS"/>
+                        </columnConstraints>
+
+                        <Label text="Full Name"  GridPane.rowIndex="0" styleClass="field-label"/>
+                        <TextField fx:id="fullNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                   styleClass="auth-field"/>
+
+                        <Label text="Email"      GridPane.rowIndex="1" styleClass="field-label"/>
+                        <TextField fx:id="emailField"    GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                   styleClass="auth-field"/>
+
+                        <Label text="Username"   GridPane.rowIndex="2" styleClass="field-label"/>
+                        <TextField fx:id="usernameField" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                                   styleClass="auth-field" editable="false"/>
+                    </GridPane>
+
+                    <Label fx:id="profileStatusLabel" wrapText="true" visible="false"/>
+
+                    <Button text="Save Changes" onAction="#handleUpdateProfile" styleClass="btn-primary"/>
+                </VBox>
+
+                <!-- ---- Password card ---- -->
+                <VBox styleClass="settings-card" spacing="16">
+                    <padding><Insets topRightBottomLeft="28"/></padding>
+                    <Label text="Change Password" styleClass="section-title"/>
+
+                    <GridPane hgap="16" vgap="14">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="160"/>
+                            <ColumnConstraints prefWidth="320" hgrow="ALWAYS"/>
+                        </columnConstraints>
+
+                        <Label text="Current Password" GridPane.rowIndex="0" styleClass="field-label"/>
+                        <PasswordField fx:id="currentPasswordField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                       styleClass="auth-field" promptText="Current password"/>
+
+                        <Label text="New Password"     GridPane.rowIndex="1" styleClass="field-label"/>
+                        <PasswordField fx:id="newPasswordField"     GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                       styleClass="auth-field" promptText="At least 8 characters"/>
+
+                        <Label text="Confirm New"      GridPane.rowIndex="2" styleClass="field-label"/>
+                        <PasswordField fx:id="confirmPasswordField" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                                       styleClass="auth-field" promptText="Repeat new password"/>
+                    </GridPane>
+
+                    <Label fx:id="passwordStatusLabel" wrapText="true" visible="false"/>
+
+                    <Button text="Change Password" onAction="#handleChangePassword" styleClass="btn-primary"/>
+                </VBox>
+
+                <!-- ---- Danger zone ---- -->
+                <VBox styleClass="settings-card, danger-card" spacing="12">
+                    <padding><Insets topRightBottomLeft="28"/></padding>
+                    <Label text="Danger Zone" styleClass="section-title, danger-title"/>
+                    <Label text="Permanently delete your account and all associated tasks. This action cannot be undone."
+                           wrapText="true" styleClass="page-subtitle"/>
+                    <Button text="🗑  Delete My Account" onAction="#handleDeleteAccount"
+                            styleClass="btn-danger"/>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

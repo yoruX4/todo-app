@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.todoapp.controller.DashboardController"
+            styleClass="main-root">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="220" spacing="4">
+            <padding><Insets top="32" right="16" bottom="32" left="16"/></padding>
+
+            <Label text="TaskFlow" styleClass="sidebar-logo"/>
+            <Region prefHeight="32"/>
+
+            <Button text="📊  Dashboard" onAction="#handleGoToDashboard"
+                    maxWidth="Infinity" styleClass="sidebar-btn, sidebar-btn-active"/>
+            <Button text="✅  My Tasks"  onAction="#handleGoToTasks"
+                    maxWidth="Infinity" styleClass="sidebar-btn"/>
+            <Button text="👤  Profile"   onAction="#handleGoToProfile"
+                    maxWidth="Infinity" styleClass="sidebar-btn"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button text="⇠  Logout" onAction="#handleLogout"
+                    maxWidth="Infinity" styleClass="sidebar-btn, sidebar-btn-danger"/>
+        </VBox>
+    </left>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="content-scroll">
+            <VBox spacing="24" styleClass="content-area">
+                <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+                <!-- Header -->
+                <VBox spacing="4">
+                    <Label fx:id="welcomeLabel" styleClass="page-title"/>
+                    <Label text="Here's an overview of your tasks." styleClass="page-subtitle"/>
+                </VBox>
+
+                <!-- Stats cards -->
+                <HBox spacing="20">
+                    <!-- Total -->
+                    <VBox styleClass="stat-card, stat-card-blue" HBox.hgrow="ALWAYS">
+                        <padding><Insets topRightBottomLeft="24"/></padding>
+                        <Label text="TOTAL TASKS" styleClass="stat-label"/>
+                        <Label fx:id="totalTasksLabel" text="0" styleClass="stat-number"/>
+                    </VBox>
+
+                    <!-- Pending -->
+                    <VBox styleClass="stat-card, stat-card-yellow" HBox.hgrow="ALWAYS">
+                        <padding><Insets topRightBottomLeft="24"/></padding>
+                        <Label text="PENDING" styleClass="stat-label"/>
+                        <Label fx:id="pendingTasksLabel" text="0" styleClass="stat-number"/>
+                    </VBox>
+
+                    <!-- In Progress -->
+                    <VBox styleClass="stat-card, stat-card-purple" HBox.hgrow="ALWAYS">
+                        <padding><Insets topRightBottomLeft="24"/></padding>
+                        <Label text="IN PROGRESS" styleClass="stat-label"/>
+                        <Label fx:id="inProgressTasksLabel" text="0" styleClass="stat-number"/>
+                    </VBox>
+
+                    <!-- Completed -->
+                    <VBox styleClass="stat-card, stat-card-green" HBox.hgrow="ALWAYS">
+                        <padding><Insets topRightBottomLeft="24"/></padding>
+                        <Label text="COMPLETED" styleClass="stat-label"/>
+                        <Label fx:id="completedTasksLabel" text="0" styleClass="stat-number"/>
+                    </VBox>
+
+                    <!-- Overdue -->
+                    <VBox styleClass="stat-card, stat-card-red" HBox.hgrow="ALWAYS">
+                        <padding><Insets topRightBottomLeft="24"/></padding>
+                        <Label text="OVERDUE" styleClass="stat-label"/>
+                        <Label fx:id="overdueTasksLabel" text="0" styleClass="stat-number"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Quick action -->
+                <VBox styleClass="quick-action-card" spacing="12">
+                    <padding><Insets topRightBottomLeft="28"/></padding>
+                    <Label text="Quick Actions" styleClass="section-title"/>
+                    <HBox spacing="12">
+                        <Button text="➕  Add New Task"      onAction="#handleGoToTasks" styleClass="btn-primary"/>
+                        <Button text="📋  View All Tasks"    onAction="#handleGoToTasks" styleClass="btn-secondary"/>
+                        <Button text="👤  Edit Profile"      onAction="#handleGoToProfile" styleClass="btn-secondary"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

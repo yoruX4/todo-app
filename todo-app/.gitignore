@@ -1,0 +1,49 @@
+# =========================================================
+#  TaskFlow – .gitignore
+# =========================================================
+
+# ---- SECRETS – NEVER commit these ----
+.env
+*.env
+secrets.properties
+application-local.properties
+
+# ---- Maven build output ----
+target/
+*.class
+*.jar
+*.war
+
+# ---- IDE files ----
+.idea/
+*.iml
+*.iws
+*.ipr
+.eclipse/
+.project
+.classpath
+.settings/
+.vscode/
+*.code-workspace
+nbproject/
+nb-configuration.xml
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ---- Logs ----
+*.log
+logs/
+
+# ---- Test coverage ----
+*.exec
+jacoco.xml
+surefire-reports/
+
+# ---- Compiled JavaFX native libs ----
+*.dylib
+*.so
+*.dll

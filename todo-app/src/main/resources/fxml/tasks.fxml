@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.todoapp.controller.TasksController"
+            styleClass="main-root">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="220" spacing="4">
+            <padding><Insets top="32" right="16" bottom="32" left="16"/></padding>
+
+            <Label text="TaskFlow" styleClass="sidebar-logo"/>
+            <Region prefHeight="32"/>
+
+            <Button text="📊  Dashboard" onAction="#handleGoToDashboard"
+                    maxWidth="Infinity" styleClass="sidebar-btn"/>
+            <Button text="✅  My Tasks"  onAction="#handleGoToTasks"
+                    maxWidth="Infinity" styleClass="sidebar-btn, sidebar-btn-active"/>
+            <Button text="👤  Profile"   onAction="#handleGoToProfile"
+                    maxWidth="Infinity" styleClass="sidebar-btn"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button text="⇠  Logout" onAction="#handleLogout"
+                    maxWidth="Infinity" styleClass="sidebar-btn, sidebar-btn-danger"/>
+        </VBox>
+    </left>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <center>
+        <VBox styleClass="content-area" spacing="20">
+            <padding><Insets top="32" right="32" bottom="32" left="32"/></padding>
+
+            <!-- Header row -->
+            <HBox alignment="CENTER_LEFT" spacing="16">
+                <VBox HBox.hgrow="ALWAYS">
+                    <Label text="My Tasks" styleClass="page-title"/>
+                    <Label text="Manage and track all your tasks." styleClass="page-subtitle"/>
+                </VBox>
+                <Button text="➕ New Task" onAction="#handleNewTask" styleClass="btn-primary"/>
+            </HBox>
+
+            <!-- Filter / Search row -->
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label text="Filter:"/>
+                <ComboBox fx:id="filterCombo" prefWidth="160"/>
+                <TextField fx:id="searchField" promptText="🔍  Search tasks…" prefWidth="280"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="taskCountLabel" styleClass="count-label"/>
+            </HBox>
+
+            <!-- Task table -->
+            <TableView fx:id="taskTable" VBox.vgrow="ALWAYS" styleClass="task-table">
+                <columns>
+                    <TableColumn fx:id="colTitle"    text="Title"    prefWidth="260"/>
+                    <TableColumn fx:id="colCategory" text="Category" prefWidth="120"/>
+                    <TableColumn fx:id="colPriority" text="Priority" prefWidth="100"/>
+                    <TableColumn fx:id="colStatus"   text="Status"   prefWidth="130"/>
+                    <TableColumn fx:id="colDueDate"  text="Due Date" prefWidth="130"/>
+                    <TableColumn fx:id="colActions"  text="Actions"  prefWidth="170" sortable="false"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
